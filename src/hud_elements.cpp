@@ -575,6 +575,19 @@ void HudElements::vkbasalt(){
     }
 }
 
+void HudElements::battery_power(){
+    if (HUDElements.params->enabled[OVERLAY_PARAM_ENABLED_battery_power]){
+        ImGui::TableNextRow(); ImGui::TableNextColumn();
+        ImGui::PushFont(HUDElements.sw_stats->font1);
+        ImGui::TextColored(HUDElements.colors.engine, "%s", "BATTERY");
+        ImGui::TableNextColumn();
+        right_aligned_text(HUDElements.colors.text, HUDElements.ralign_width, "%.1f",Battery_Stats.current_watt);
+        ImGui::SameLine(0, 1.0f);
+        ImGui::Text("W");
+        ImGui::PopFont();
+    }
+}
+
 void HudElements::graphs(){
     ImGui::TableNextRow(); ImGui::TableNextColumn();
     ImGui::Dummy(ImVec2(0.0f, real_font_size.y));
@@ -726,6 +739,7 @@ void HudElements::sort_elements(std::pair<std::string, std::string> option){
     if (param == "vkbasalt")        { ordered_functions.push_back({vkbasalt, value});               }
     if (param == "exec")            { ordered_functions.push_back({_exec, value});
                                       exec_list.push_back({int(ordered_functions.size() - 1), value});       }
+    if (param == "battery_power")   {ordered_functions.push_back({battery_power, value});           }
     if (param == "graphs"){
         if (!HUDElements.params->enabled[OVERLAY_PARAM_ENABLED_graphs])
             HUDElements.params->enabled[OVERLAY_PARAM_ENABLED_graphs] = true;

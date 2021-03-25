@@ -5,6 +5,7 @@
 #include <map>
 #include <sstream>
 #include <logging.h>
+#include <battery.h>
 
 class HudElements{
     public:
@@ -56,6 +57,7 @@ class HudElements{
         static void gamemode();
         static void graphs();
         static void _exec();
+        static void battery_power();
 
         void convert_colors(struct overlay_params& params);
         void convert_colors(bool do_conv, struct overlay_params& params);
@@ -83,7 +85,7 @@ class HudElements{
                 fps_value_med,
                 fps_value_high;
         } colors {};
-        
+
 };
 
 extern HudElements HUDElements;

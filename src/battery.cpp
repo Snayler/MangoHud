@@ -10,7 +10,7 @@ void BatteryStats::findFiles(){
     // powerMap["charge_now"] = {file, 0};
     // file = fopen("/sys/class/power_supply/BAT1/charge_full", "r");
     // powerMap["charge_full"] = {file, 0};
-    
+
     files_fetched = true;
 }
 
