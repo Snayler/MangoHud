@@ -1,4 +1,4 @@
-#include <sstream>
+ithm>ithm>ithm>ithm>#include <sstream>
 #include <iomanip>
 #include <algorithm>
 #include "overlay.h"
@@ -403,6 +403,7 @@ void render_imgui(swapchain_stats& data, struct overlay_params& params, ImVec2& 
    if(not logger) logger = std::make_unique<Logger>(&params);
    static float ralign_width = 0, old_scale = 0;
    window_size = ImVec2(params.width, params.height);
+   unsigned width = ImGui::GetIO().DisplaySize.x;
    unsigned height = ImGui::GetIO().DisplaySize.y;
    auto now = Clock::now();
 
