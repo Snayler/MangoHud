@@ -35,6 +35,7 @@ typedef unsigned long KeySym;
    OVERLAY_PARAM_BOOL(gpu_stats)                     \
    OVERLAY_PARAM_BOOL(ram)                           \
    OVERLAY_PARAM_BOOL(vram)                          \
+   OVERLAY_PARAM_BOOL(crosshair)                     \
    OVERLAY_PARAM_BOOL(time)                          \
    OVERLAY_PARAM_BOOL(full)                          \
    OVERLAY_PARAM_BOOL(read_cfg)                      \
@@ -81,10 +82,12 @@ typedef unsigned long KeySym;
    OVERLAY_PARAM_CUSTOM(toggle_fps_limit)            \
    OVERLAY_PARAM_CUSTOM(toggle_logging)              \
    OVERLAY_PARAM_CUSTOM(reload_cfg)                  \
+   OVERLAY_PARAM_CUSTOM(crosshair_size)              \
    OVERLAY_PARAM_CUSTOM(upload_log)                  \
    OVERLAY_PARAM_CUSTOM(upload_logs)                 \
    OVERLAY_PARAM_CUSTOM(offset_x)                    \
    OVERLAY_PARAM_CUSTOM(offset_y)                    \
+   OVERLAY_PARAM_CUSTOM(crosshair_color)             \
    OVERLAY_PARAM_CUSTOM(background_alpha)            \
    OVERLAY_PARAM_CUSTOM(time_format)                 \
    OVERLAY_PARAM_CUSTOM(io_read)                     \
@@ -166,6 +169,7 @@ struct overlay_params {
    int control;
    uint32_t fps_sampling_period; /* us */
    std::vector<std::uint32_t> fps_limit;
+   uint32_t crosshair_size;
    bool help;
    bool no_display;
    bool full;
@@ -176,7 +180,7 @@ struct overlay_params {
    unsigned vsync;
    int gl_vsync;
    uint64_t log_duration;
-   unsigned cpu_color, gpu_color, vram_color, ram_color, engine_color, io_color, frametime_color, background_color, text_color, wine_color;
+   unsigned crosshair_color, cpu_color, gpu_color, vram_color, ram_color, engine_color, io_color, frametime_color, background_color, text_color, wine_color;
    std::vector<unsigned> gpu_load_color;
    std::vector<unsigned> cpu_load_color;
    std::vector<unsigned> gpu_load_value;
