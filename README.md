@@ -1,6 +1,7 @@
 # MangoHud
 
 A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
+
 (This fork is edited to re-enable crosshair)
 
 #### Example:
