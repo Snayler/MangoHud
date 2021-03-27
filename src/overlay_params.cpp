@@ -158,6 +158,12 @@ parse_fps_limit(const char *str)
    return fps_limit;
 }
 
+static uint32_t
+parse_crosshair_size(const char *str)
+{
+   return strtol(str, NULL, 0);
+}
+
 static bool
 parse_no_display(const char *str)
 {
@@ -381,6 +387,7 @@ parse_font_glyph_ranges(const char *str)
 #define parse_table_columns(s) parse_unsigned(s)
 #define parse_autostart_log(s) parse_unsigned(s)
 
+#define parse_crosshair_color(s) parse_color(s)
 #define parse_cpu_color(s) parse_color(s)
 #define parse_gpu_color(s) parse_color(s)
 #define parse_vram_color(s) parse_color(s)
@@ -491,6 +498,7 @@ parse_overlay_env(struct overlay_params *params,
          params->enabled[OVERLAY_PARAM_ENABLED_histogram] = 0;
          params->enabled[OVERLAY_PARAM_ENABLED_gpu_load_change] = 0;
          params->enabled[OVERLAY_PARAM_ENABLED_cpu_load_change] = 0;
+         params->enabled[OVERLAY_PARAM_ENABLED_crosshair] = 0;
          params->enabled[OVERLAY_PARAM_ENABLED_read_cfg] = read_cfg;
       }
 #define OVERLAY_PARAM_BOOL(name)                                       \
@@ -545,6 +553,7 @@ parse_overlay_config(struct overlay_params *params,
    params->fps_limit = { 0 };
    params->vsync = -1;
    params->gl_vsync = -2;
+   params->crosshair_size = 30;
    params->offset_x = 0;
    params->offset_y = 0;
    params->background_alpha = 0.5;
@@ -620,6 +629,7 @@ parse_overlay_config(struct overlay_params *params,
 #undef OVERLAY_PARAM_BOOL
 #undef OVERLAY_PARAM_CUSTOM
          params->enabled[OVERLAY_PARAM_ENABLED_histogram] = 0;
+         params->enabled[OVERLAY_PARAM_ENABLED_crosshair] = 0;
          params->options.erase("full");
       }
       for (auto& it : params->options) {
@@ -650,7 +660,8 @@ parse_overlay_config(struct overlay_params *params,
       params->font_scale_media_player = 0.55f;
 
    // Convert from 0xRRGGBB to ImGui's format
-   std::array<unsigned *, 17> colors = {
+   std::array<unsigned *, 18> colors = {
+      &params->crosshair_color,
       &params->cpu_color,
       &params->gpu_color,
       &params->vram_color,
