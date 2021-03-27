@@ -1,6 +1,7 @@
 # MangoHud
 
 A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
+(This fork is edited to re-enable crosshair)
 
 #### Example:
 ![](assets/overlay_example.gif)
@@ -139,6 +140,7 @@ Parameters that are enabled by default have to be explicitly disabled. These (cu
 | `gpu_core_clock`<br>`gpu_mem_clock`| Displays GPU core/memory frequency                                                    |
 | `ram`<br>`vram`                    | Displays system RAM/VRAM usage                                                        |
 | `full`                             | Enables most of the toggleable parameters (currently excludes `histogram`)            |
+| `crosshair`                        | Adds a crosshair overlay at the centre of the screen                                  |
 | `font_size=`                       | Customizeable font size (default=24)                                                  |
 | `font_size_text=`                  | Customizeable font size for other text like media metadata (default=24)               |
 | `font_scale=`                      | Set global font scale (default=1.0)                                                   |
